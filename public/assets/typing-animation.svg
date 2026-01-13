@@ -1,44 +1,15 @@
-<svg fill="none" viewBox="0 0 800 120" xmlns="http://www.w3.org/2000/svg">
-  <foreignObject width="100%" height="100%">
-    <div xmlns="http://www.w3.org/2001/xhtml">
-      <style>
-        @keyframes typing {
-          from { width: 0 }
-          to { width: 100% }
-        }
-        @keyframes fadein {
-          from { opacity: 0; transform: translateY(10px); }
-          to { opacity: 1; transform: translateY(0); }
-        }
-        .container {
-          font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-          color: #4f46e5;
-          font-size: 28px;
-          font-weight: 800;
-          text-align: center;
-        }
-        .line-1 {
-          overflow: hidden;
-          white-space: nowrap;
-          margin: 0 auto;
-          letter-spacing: .15em;
-          animation: 
-            typing 2s steps(40, end),
-            fadein 0.5s ease-out;
-        }
-        .line-2 {
-          color: #6366f1;
-          font-size: 20px;
-          opacity: 0;
-          animation: fadein 0.8s ease-out forwards;
-          animation-delay: 2.5s;
-          margin-top: 10px;
-        }
-      </style>
-      <div class="container">
-        <div class="line-1">Next-Gen Angular 19 E-Commerce</div>
-        <div class="line-2">Millisecond-perfect reactivity with Signals &amp; Material.</div>
-      </div>
-    </div>
-  </foreignObject>
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="100" viewBox="0 0 800 100">
+  <!-- Line 1: Main Title -->
+  <text x="50%" y="40%" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, sans-serif" font-weight="800" font-size="32" fill="#4f46e5" opacity="0">
+    Next-Gen Angular 19 E-Commerce
+    <animate attributeName="opacity" from="0" to="1" dur="1s" begin="0.5s" fill="freeze" />
+    <animate attributeName="y" from="50" to="40" dur="0.8s" begin="0.5s" fill="freeze" />
+  </text>
+  
+  <!-- Line 2: Subtitle -->
+  <text x="50%" y="80%" text-anchor="middle" font-family="'Segoe UI', Roboto, Helvetica, sans-serif" font-size="20" fill="#6366f1" opacity="0">
+    Millisecond-perfect reactivity with Signals &amp; Material.
+    <animate attributeName="opacity" from="0" to="1" dur="1s" begin="2s" fill="freeze" />
+    <animate attributeName="y" from="90" to="80" dur="0.8s" begin="2s" fill="freeze" />
+  </text>
 </svg>

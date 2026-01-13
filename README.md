@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="public/assets/typing-animation.svg" alt="StoreApp Animation" width="100%">
+  <img src="https://raw.githubusercontent.com/RichardRajuChirayath/Product-Catalog-Cart/main/public/assets/typing-animation.svg" alt="StoreApp Animation" width="100%">
   <br />
   <img src="https://img.shields.io/badge/Angular-19.0+-dd0031.svg?style=for-the-badge&logo=angular" alt="Angular 19">
   <img src="https://img.shields.io/badge/Material-19.0+-3f51b5.svg?style=for-the-badge&logo=angular-material" alt="Angular Material">
