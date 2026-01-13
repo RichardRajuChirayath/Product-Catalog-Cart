@@ -1,0 +1,123 @@
+<div class="container cart-container">
+    <div class="cart-header">
+        <h1>Your Shopping Bag</h1>
+        <span class="items-count">{{ cartService.totalItems() }} Items</span>
+    </div>
+
+    <div *ngIf="cartService.cartItems().length > 0; else emptyCart">
+        <div class="cart-layout">
+            <div class="items-column">
+                <mat-card class="items-card">
+                    <div class="cart-item" *ngFor="let item of cartService.cartItems()">
+                        <div class="item-img-box">
+                            <img [src]="item.product.image" [alt]="item.product.title">
+                        </div>
+
+                        <div class="item-details">
+                            <span class="item-tag">{{ item.product.category }}</span>
+                            <h3 [routerLink]="['/product', item.product.id]">{{ item.product.title }}</h3>
+                            <div class="price-single">{{ item.product.price | currency:'INR':'symbol':'1.2-2' }}</div>
+                        </div>
+
+                        <div class="item-logic">
+                            <div class="quantity-picker">
+                                <button mat-icon-button (click)="updateQuantity(item, -1)">
+                                    <mat-icon>remove</mat-icon>
+                                </button>
+                                <span>{{ item.quantity }}</span>
+                                <button mat-icon-button (click)="updateQuantity(item, 1)">
+                                    <mat-icon>add</mat-icon>
+                                </button>
+                            </div>
+                            <div class="item-total">{{ item.totalPrice | currency:'INR':'symbol':'1.2-2' }}</div>
+                        </div>
+
+                        <button mat-icon-button class="btn-remove" (click)="removeItem(item.product.id)">
+                            <mat-icon>close</mat-icon>
+                        </button>
+                    </div>
+
+                    <div class="cart-footer-actions">
+                        <button mat-button color="warn" (click)="clearCart()">
+                            <mat-icon>delete_sweep</mat-icon> EMPTY BAG
+                        </button>
+                        <button mat-button color="primary" routerLink="/products">
+                            <mat-icon>arrow_back</mat-icon> ADD MORE ITEMS
+                        </button>
+                    </div>
+                </mat-card>
+
+                <mat-card class="coupon-card">
+                    <mat-form-field appearance="outline">
+                        <mat-label>Promo Code</mat-label>
+                        <input matInput [(ngModel)]="couponCode" placeholder="Enter code (e.g. PREMIUM)"
+                            (keyup.enter)="applyCoupon()">
+                        <button mat-button matSuffix color="primary" (click)="applyCoupon()" [disabled]="!couponCode()">
+                            APPLY
+                        </button>
+                    </mat-form-field>
+                    <div class="applied-coupon" *ngIf="cartService.appliedCoupon() as coupon">
+                        <mat-icon>local_offer</mat-icon>
+                        <span>{{ coupon.code }} ({{ coupon.discount }}% Off)</span>
+                        <button mat-icon-button color="warn" (click)="cartService.removeCoupon()">
+                            <mat-icon style="font-size: 18px;">cancel</mat-icon>
+                        </button>
+                    </div>
+                </mat-card>
+            </div>
+
+            <div class="summary-column">
+                <mat-card class="summary-card glass-morphism">
+                    <h3>ORDER SUMMARY</h3>
+
+                    <div class="summary-lines">
+                        <div class="summary-row">
+                            <span>Subtotal</span>
+                            <span>{{ cartService.subtotalAmount() | currency:'INR':'symbol':'1.2-2' }}</span>
+                        </div>
+                        <div class="summary-row" *ngIf="cartService.discountAmount() > 0">
+                            <span>Discount</span>
+                            <span class="discount-text">-{{ cartService.discountAmount() |
+                                currency:'INR':'symbol':'1.2-2' }}</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Shipping</span>
+                            <span class="free">FREE</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Estimated Tax</span>
+                            <span>{{ 0 | currency:'INR':'symbol':'1.2-2' }}</span>
+                        </div>
+                    </div>
+
+                    <div class="total-row">
+                        <span>Total Payable</span>
+                        <span class="total-price">{{ cartService.totalAmount() | currency:'INR':'symbol':'1.2-2'
+                            }}</span>
+                    </div>
+
+                    <button mat-raised-button color="primary" class="checkout-btn" routerLink="/checkout">
+                        SECURE CHECKOUT
+                        <mat-icon>lock</mat-icon>
+                    </button>
+
+                    <div class="secure-badges">
+                        <mat-icon>verified_user</mat-icon>
+                        <span>SSL Secure Payment</span>
+                    </div>
+                </mat-card>
+            </div>
+        </div>
+    </div>
+
+    <ng-template #emptyCart>
+        <div class="empty-state-view">
+            <div class="empty-bag-icon">
+                <mat-icon>shopping_bag</mat-icon>
+            </div>
+            <h2>Your bag is currently empty</h2>
+            <p>Looks like you haven't added anything to your bag yet.</p>
+            <button mat-raised-button color="primary" routerLink="/products">EXPLORE PRODUCTS</button>
+        </div>
+    </ng-template>
+</div>

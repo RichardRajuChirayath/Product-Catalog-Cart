@@ -1,0 +1,26 @@
+<mat-toolbar color="primary" class="nav-toolbar">
+    <div class="logo" routerLink="/products" style="cursor: pointer">
+        <mat-icon style="font-size: 30px; width: 30px; height: 30px;">shopping_bag</mat-icon>
+        <span>StoreApp</span>
+    </div>
+
+    <span class="spacer"></span>
+
+    <div class="nav-links">
+        <button mat-button routerLink="/admin" routerLinkActive="active-link" class="nav-link-btn">Admin</button>
+        <button mat-button routerLink="/products" routerLinkActive="active-link" class="nav-link-btn">Products</button>
+
+        <button mat-icon-button routerLink="/wishlist" routerLinkActive="active-link" class="wishlist-btn"
+            matTooltip="Wishlist">
+            <mat-icon>favorite_border</mat-icon>
+            <span class="badge-count wishlist-badge" *ngIf="wishlistService.totalItems() > 0">{{
+                wishlistService.totalItems() }}</span>
+        </button>
+
+        <button mat-icon-button routerLink="/cart" routerLinkActive="active-link" class="cart-btn"
+            matTooltip="Shopping Cart">
+            <mat-icon>shopping_cart</mat-icon>
+            <span class="badge-count" *ngIf="cartService.totalItems() > 0">{{ cartService.totalItems() }}</span>
+        </button>
+    </div>
+</mat-toolbar>

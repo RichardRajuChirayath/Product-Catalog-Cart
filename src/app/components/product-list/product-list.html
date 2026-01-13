@@ -1,0 +1,87 @@
+<div class="container">
+    <!-- Header/Controls Section -->
+    <div class="controls-row">
+        <mat-form-field appearance="outline" class="search-field">
+            <mat-label>Search products...</mat-label>
+            <input matInput [ngModel]="searchText()" (ngModelChange)="productService.setSearchTerm($event)"
+                placeholder="What are you looking for?">
+            <mat-icon matSuffix>search</mat-icon>
+        </mat-form-field>
+
+        <div class="filter-group">
+            <mat-form-field appearance="outline" class="category-field">
+                <mat-label>Category</mat-label>
+                <mat-select [ngModel]="selectedCategory()" (ngModelChange)="selectedCategory.set($event)">
+                    <mat-option *ngFor="let cat of categories()" [value]="cat">{{ cat }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+            <mat-form-field appearance="outline" class="sort-field">
+                <mat-label>Sort By</mat-label>
+                <mat-select [ngModel]="sortBy()" (ngModelChange)="sortBy.set($event)">
+                    <mat-option value="default">Newest Labels</mat-option>
+                    <mat-option value="price-low">Price: Low to High</mat-option>
+                    <mat-option value="price-high">Price: High to Low</mat-option>
+                    <mat-option value="rating">Top Rated</mat-option>
+                </mat-select>
+            </mat-form-field>
+        </div>
+    </div>
+
+    <!-- Loading State -->
+    <div *ngIf="loading()" class="product-grid">
+        <mat-card *ngFor="let i of [1,2,3,4,5,6,7,8]" class="skeleton-card shimmer-effect"></mat-card>
+    </div>
+
+    <!-- Error State -->
+    <div *ngIf="error()" class="error-state">
+        <mat-icon color="warn" style="font-size: 48px; width: 48px; height: 48px;">error_outline</mat-icon>
+        <h3>{{ error() }}</h3>
+        <button mat-raised-button color="primary" (click)="ngOnInit()">Try Again</button>
+    </div>
+
+    <!-- Empty State -->
+    <div *ngIf="!loading() && !error() && filteredProducts().length === 0" class="error-state">
+        <mat-icon style="font-size: 48px; width: 48px; height: 48px; color: #cbd5e1;">search_off</mat-icon>
+        <h3>No products match your criteria.</h3>
+        <button mat-button (click)="searchText.set(''); selectedCategory.set('All'); sortBy.set('default')">Clear
+            Filters</button>
+    </div>
+
+    <!-- Product Grid -->
+    <div class="product-grid" *ngIf="!loading() && !error()">
+        <mat-card *ngFor="let product of filteredProducts()" class="product-card" [appHighlightDiscount]="product.price"
+            [routerLink]="['/product', product.id]">
+            <div class="img-container">
+                <span class="category-tag">{{ product.category }}</span>
+                <button mat-icon-button class="wishlist-toggle" (click)="toggleWishlist(product, $event)"
+                    [matTooltip]="wishlistService.isInWishlist(product.id) ? 'Remove from Wishlist' : 'Add to Wishlist'">
+                    <mat-icon [class.active-heart]="wishlistService.isInWishlist(product.id)">
+                        {{ wishlistService.isInWishlist(product.id) ? 'favorite' : 'favorite_border' }}
+                    </mat-icon>
+                </button>
+                <img [src]="product.image" [alt]="product.title">
+            </div>
+
+            <mat-card-header>
+                <mat-card-title>{{ product.title }}</mat-card-title>
+                <div class="price-row">
+                    <span class="price">{{ product.price | currency:'INR':'symbol':'1.2-2' }}</span>
+                    <div class="stock-badge">
+                        <mat-icon style="font-size: 16px; width: 16px; height: 16px;">check_circle</mat-icon>
+                        In Stock
+                    </div>
+                </div>
+            </mat-card-header>
+
+            <mat-card-actions align="end">
+                <button mat-button class="btn-details" [routerLink]="['/product', product.id]">DETAILS</button>
+                <button mat-raised-button color="primary" class="btn-add"
+                    (click)="$event.stopPropagation(); addToCart(product)">
+                    <mat-icon>add_shopping_cart</mat-icon>
+                    ADD
+                </button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

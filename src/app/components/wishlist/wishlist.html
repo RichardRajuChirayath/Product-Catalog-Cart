@@ -1,0 +1,55 @@
+<div class="container wishlist-container">
+    <div class="wishlist-header">
+        <div class="title-group">
+            <h1>My Favorites</h1>
+            <p class="items-count">{{ wishlistService.totalItems() }} items saved for later</p>
+        </div>
+        <button mat-button color="primary" routerLink="/products">
+            <mat-icon>keyboard_backspace</mat-icon>
+            CONTINUE SHOPPING
+        </button>
+    </div>
+
+    <!-- Empty State -->
+    <div *ngIf="wishlistService.totalItems() === 0" class="empty-state-view">
+        <div class="empty-heart-icon">
+            <mat-icon>favorite_border</mat-icon>
+        </div>
+        <h2>Your wishlist is empty</h2>
+        <p>Save items you love to find them easily later and keep track of your favorites.</p>
+        <button mat-raised-button color="primary" routerLink="/products"
+            style="margin-top: 24px; height: 50px; padding: 0 40px;">
+            START EXPLORING
+        </button>
+    </div>
+
+    <!-- Wishlist Grid -->
+    <div class="wishlist-grid" *ngIf="wishlistService.totalItems() > 0">
+        <mat-card *ngFor="let product of wishlistService.items()" class="product-card"
+            [routerLink]="['/product', product.id]">
+            <div class="img-container">
+                <span class="category-tag">{{ product.category }}</span>
+                <button mat-icon-button class="remove-wishlist" (click)="removeFromWishlist(product, $event)"
+                    matTooltip="Remove from Favorites">
+                    <mat-icon>close</mat-icon>
+                </button>
+                <img [src]="product.image" [alt]="product.title">
+            </div>
+
+            <mat-card-header>
+                <mat-card-title>{{ product.title }}</mat-card-title>
+                <div class="price-row">
+                    <span class="price">{{ product.price | currency:'INR':'symbol':'1.2-2' }}</span>
+                </div>
+            </mat-card-header>
+
+            <mat-card-actions align="end">
+                <button mat-raised-button color="primary" class="btn-add"
+                    (click)="$event.stopPropagation(); addToCart(product)">
+                    <mat-icon>add_shopping_cart</mat-icon>
+                    ADD TO CART
+                </button>
+            </mat-card-actions>
+        </mat-card>
+    </div>
+</div>

@@ -1,0 +1,79 @@
+.spacer {
+    flex: 1 1 auto;
+}
+
+.nav-toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    height: 80px !important;
+    padding: 0 5% !important;
+    background: #ffffff !important;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    background: linear-gradient(135deg, #6366f1 0%, #a855f7 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-links {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.nav-link-btn {
+    font-weight: 600 !important;
+    color: var(--secondary-text) !important;
+}
+
+.active-link {
+    color: #6366f1 !important;
+    background: rgba(99, 102, 241, 0.08) !important;
+}
+
+.wishlist-btn {
+    position: relative;
+    margin-right: 8px;
+    color: var(--secondary-text) !important;
+}
+
+.wishlist-btn.active-link {
+    color: #f43f5e !important;
+    background: rgba(244, 63, 94, 0.08) !important;
+}
+
+.wishlist-badge {
+    background: #6366f1 !important;
+}
+
+.cart-btn {
+    position: relative;
+    background: rgba(99, 102, 241, 0.05) !important;
+    border-radius: 12px !important;
+    width: 48px !important;
+    height: 48px !important;
+    color: #6366f1 !important;
+}
+
+.badge-count {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    background: #f43f5e;
+    color: white;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 2px 7px;
+    border-radius: 12px;
+    border: 2px solid white;
+}

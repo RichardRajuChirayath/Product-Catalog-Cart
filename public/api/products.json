@@ -1,0 +1,122 @@
+[
+    {
+        "id": 1,
+        "title": "Premium Wireless Headphones",
+        "price": 24999.00,
+        "description": "High-fidelity audio with active noise cancellation and 30-hour battery life.",
+        "category": "Electronics",
+        "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=800&q=80",
+        "rating": {
+            "rate": 4.8,
+            "count": 120
+        }
+    },
+    {
+        "id": 2,
+        "title": "Minimalist Leather Watch",
+        "price": 12500.00,
+        "description": "Elegant design with genuine Italian leather strap and Japanese quartz movement.",
+        "category": "Accessories",
+        "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80",
+        "rating": {
+            "rate": 4.5,
+            "count": 85
+        }
+    },
+    {
+        "id": 3,
+        "title": "Smart Fitness Tracker",
+        "price": 6500.00,
+        "description": "Monitor your heart rate, sleep, and workouts with this sleek, waterproof wearable.",
+        "category": "Electronics",
+        "image": "https://images.unsplash.com/photo-1575311373937-040b8e1fd5b6?auto=format&fit=crop&w=800&q=80",
+        "rating": {
+            "rate": 4.2,
+            "count": 210
+        }
+    },
+    {
+        "id": 4,
+        "title": "Organic Cotton Hoodie",
+        "price": 4999.00,
+        "description": "Stay comfortable and sustainable in this ethically sourced, ultra-soft hoodie.",
+        "category": "Apparel",
+        "image": "https://images.unsplash.com/photo-1556821840-3a63f95609a7?auto=format&fit=crop&w=800&q=80",
+        "rating": {
+            "rate": 4.7,
+            "count": 45
+        }
+    },
+    {
+        "id": 5,
+        "title": "Professional DSLR Camera",
+        "price": 99999.00,
+        "description": "Capture stunning moments with high resolution and advanced focus technology.",
+        "category": "Electronics",
+        "image": "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?auto=format&fit=crop&w=800&q=80",
+        "rating": {
+            "rate": 4.9,
+            "count": 60
+        }
+    },
+    {
+        "id": 6,
+        "title": "Premium Ceramic Table Lamp",
+        "price": 4500.00,
+        "description": "Hand-crafted ceramic base with a linen shade, providing soft ambient lighting for any room.",
+        "category": "Home Decor",
+        "image": "https://images.unsplash.com/photo-1507473885765-e6ed057f782c?auto=format&fit=crop&w=800&q=80",
+        "rating": {
+            "rate": 4.6,
+            "count": 48
+        }
+    },
+    {
+        "id": 7,
+        "title": "Mechanical Gaming Keyboard",
+        "price": 8500.00,
+        "description": "Tactile mechanical switches with customizable RGB lighting and ergonomic wrist rest.",
+        "category": "Electronics",
+        "image": "https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?auto=format&fit=crop&w=800&q=80",
+        "rating": {
+            "rate": 4.8,
+            "count": 156
+        }
+    },
+    {
+        "id": 8,
+        "title": "Ergonomic Office Chair",
+        "price": 18999.00,
+        "description": "Fully adjustable mesh chair designed for maximum comfort during long work hours.",
+        "category": "Furniture",
+        "image": "https://images.unsplash.com/photo-1580480055273-228ff5388ef8?auto=format&fit=crop&w=800&q=80",
+        "rating": {
+            "rate": 4.4,
+            "count": 89
+        }
+    },
+    {
+        "id": 9,
+        "title": "Sunlight Protection Sunglasses",
+        "price": 6999.00,
+        "description": "Polarized lenses with UV400 protection and a classic aviator frame.",
+        "category": "Accessories",
+        "image": "https://images.unsplash.com/photo-1572635196237-14b3f281503f?auto=format&fit=crop&w=800&q=80",
+        "rating": {
+            "rate": 4.7,
+            "count": 67
+        }
+    },
+    {
+        "id": 10,
+        "title": "Smart Home Hub",
+        "price": 15999.00,
+        "description": "Control your entire house with this voice-activated smart assistant and central hub.",
+        "category": "Electronics",
+        "image": "https://images.unsplash.com/photo-1589492477829-5e65395b66cc?auto=format&fit=crop&w=800&q=80",
+        "rating": {
+            "rate": 4.1,
+            "count": 250
+        }
+    }
+]
