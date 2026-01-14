@@ -110,6 +110,4 @@ src/
 
 ---
 
-<div align="center">
-  <p>Built with ❤️ by [Richard Raju](https://github.com/RichardRajuChirayath)</p>
-</div>
+
