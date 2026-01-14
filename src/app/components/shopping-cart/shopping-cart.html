@@ -29,7 +29,8 @@
                                     <mat-icon>add</mat-icon>
                                 </button>
                             </div>
-                            <div class="item-total">{{ item.totalPrice | currency:'INR':'symbol':'1.2-2' }}</div>
+                            <div class="item-total">{{ (item.product.price * item.quantity) |
+                                currency:'INR':'symbol':'1.2-2' }}</div>
                         </div>
 
                         <button mat-icon-button class="btn-remove" (click)="removeItem(item.product.id)">

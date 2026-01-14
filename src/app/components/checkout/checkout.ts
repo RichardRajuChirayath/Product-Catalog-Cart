@@ -40,13 +40,21 @@ export class Checkout {
   trackingStep = signal(0);
   orderNumber = signal('');
 
-  checkoutForm = this.fb.group({
+  customerInfo = this.fb.group({
     fullName: ['', [Validators.required, Validators.minLength(3)]],
     email: ['', [Validators.required, Validators.email]],
     phone: ['', [Validators.required, Validators.pattern('^[0-9]{10,12}$')]],
+  });
+
+  shippingInfo = this.fb.group({
     address: ['', [Validators.required, Validators.minLength(10)]],
     city: ['', Validators.required],
     zipCode: ['', [Validators.required, Validators.pattern('^[0-9]{5,6}$')]],
+  });
+
+  checkoutForm = this.fb.group({
+    customer: this.customerInfo,
+    shipping: this.shippingInfo
   });
 
   onSubmit(): void {

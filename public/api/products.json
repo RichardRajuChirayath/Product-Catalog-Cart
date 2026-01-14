@@ -13,9 +13,9 @@
     },
     {
         "id": 2,
-        "title": "Minimalist Leather Watch",
+        "title": "Minimalist Smart Watch",
         "price": 12500.00,
-        "description": "Elegant design with genuine Italian leather strap and Japanese quartz movement.",
+        "description": "Elegant design with genuine Italian strap and Japanese quartz movement.",
         "category": "Accessories",
         "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=800&q=80",
         "rating": {
@@ -109,9 +109,9 @@
     },
     {
         "id": 10,
-        "title": "Smart Home Hub",
-        "price": 15999.00,
-        "description": "Control your entire house with this voice-activated smart assistant and central hub.",
+        "title": "iphone 14",
+        "price": 100000.00,
+        "description": "Experience the latest iPhone with powerful performance and a stunning display.",
         "category": "Electronics",
         "image": "https://images.unsplash.com/photo-1589492477829-5e65395b66cc?auto=format&fit=crop&w=800&q=80",
         "rating": {

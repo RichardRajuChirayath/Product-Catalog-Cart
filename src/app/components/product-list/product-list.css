@@ -115,27 +115,28 @@
 }
 
 mat-card-header {
-    padding: 24px 24px 0 !important;
+    padding: 28px 28px 0 !important;
 }
 
 mat-card-title {
     font-size: 20px !important;
     font-weight: 700 !important;
-    line-height: 1.3 !important;
-    margin-bottom: 12px !important;
+    line-height: 1.4 !important;
+    margin-bottom: 16px !important;
     display: -webkit-box;
     -webkit-line-clamp: 2;
     line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
-    min-height: 52px;
+    min-height: 56px;
 }
 
 .price-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 12px;
+    margin-top: 16px;
+    padding: 0 4px;
 }
 
 .price {
@@ -154,7 +155,7 @@ mat-card-title {
 }
 
 mat-card-actions {
-    padding: 24px !important;
+    padding: 28px !important;
     display: flex;
     gap: 16px;
 }

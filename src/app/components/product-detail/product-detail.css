@@ -55,8 +55,8 @@
 .product-title {
     font-size: 48px;
     font-weight: 800;
-    line-height: 1.1;
-    margin-bottom: 24px;
+    line-height: 1.2;
+    margin-bottom: 28px;
     letter-spacing: -1px;
 }
 
@@ -64,7 +64,7 @@
     display: flex;
     align-items: center;
     gap: 32px;
-    margin-bottom: 40px;
+    margin-bottom: 48px;
 }
 
 .rating-badge {
@@ -101,7 +101,7 @@
 }
 
 .price-section {
-    margin-bottom: 40px;
+    margin-bottom: 48px;
 }
 
 .main-price {
@@ -109,12 +109,16 @@
     font-weight: 800;
     color: #6366f1;
     display: block;
+    line-height: 1.2;
 }
 
 .tax-info {
     font-size: 14px;
     color: var(--secondary-text);
     font-weight: 500;
+    display: block;
+    margin-top: 12px;
+    letter-spacing: 0.5px;
 }
 
 .description-section h3 {

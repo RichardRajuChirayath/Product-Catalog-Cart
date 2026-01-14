@@ -9,15 +9,19 @@ import { CartItem } from '../models/cart-item.model';
 export class CartService {
   private snackBar = inject(MatSnackBar);
 
-  cartItems = signal<CartItem[]>([]);
+  cartItems = signal<CartItem[]>(this.loadFromStorage());
   appliedCoupon = signal<{ code: string; discount: number } | null>(null);
+
+  constructor() {
+    this.saveToStorage();
+  }
 
   totalItems = computed(() =>
     this.cartItems().reduce((acc, item) => acc + item.quantity, 0)
   );
 
   subtotalAmount = computed(() =>
-    this.cartItems().reduce((acc, item) => acc + item.totalPrice, 0)
+    this.cartItems().reduce((acc, item) => acc + (item.product.price * item.quantity), 0)
   );
 
   discountAmount = computed(() => {
@@ -38,8 +42,10 @@ export class CartService {
       existingItem.quantity++;
       this.cartItems.set([...currentItems]);
     } else {
-      this.cartItems.set([...currentItems, new CartItem(product)]);
+      const newItem = new CartItem(product);
+      this.cartItems.set([...currentItems, newItem]);
     }
+    this.saveToStorage();
 
     this.snackBar.open(`${product.title} added to cart`, 'Close', {
       duration: 3000,
@@ -51,6 +57,7 @@ export class CartService {
   removeFromCart(productId: number): void {
     const item = this.cartItems().find(i => i.product.id === productId);
     this.cartItems.set(this.cartItems().filter(item => item.product.id !== productId));
+    this.saveToStorage();
 
     if (item) {
       this.snackBar.open(`${item.product.title} removed from cart`, 'Close', {
@@ -70,6 +77,7 @@ export class CartService {
     if (item) {
       item.quantity = quantity;
       this.cartItems.set([...items]);
+      this.saveToStorage();
     }
   }
 
@@ -97,6 +105,24 @@ export class CartService {
   clearCart(): void {
     this.cartItems.set([]);
     this.appliedCoupon.set(null);
+    this.saveToStorage();
     this.snackBar.open('Cart cleared', 'Close', { duration: 2000 });
+  }
+
+  private saveToStorage(): void {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('cart', JSON.stringify(this.cartItems()));
+    }
+  }
+
+  private loadFromStorage(): CartItem[] {
+    if (typeof window === 'undefined') return [];
+    const saved = localStorage.getItem('cart');
+    if (!saved) return [];
+    try {
+      return JSON.parse(saved);
+    } catch {
+      return [];
+    }
   }
 }

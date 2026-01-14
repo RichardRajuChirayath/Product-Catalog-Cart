@@ -4,8 +4,8 @@
 
         <mat-stepper linear #stepper class="checkout-stepper">
             <!-- Step 1: Customer Info -->
-            <mat-step [stepControl]="checkoutForm">
-                <form [formGroup]="checkoutForm">
+            <mat-step [stepControl]="customerInfo">
+                <form [formGroup]="customerInfo">
                     <ng-template matStepLabel>Customer Details</ng-template>
 
                     <div class="step-content">
@@ -36,8 +36,8 @@
             </mat-step>
 
             <!-- Step 2: Shipping -->
-            <mat-step [stepControl]="checkoutForm">
-                <form [formGroup]="checkoutForm">
+            <mat-step [stepControl]="shippingInfo">
+                <form [formGroup]="shippingInfo">
                     <ng-template matStepLabel>Shipping Address</ng-template>
 
                     <div class="step-content">
@@ -75,15 +75,16 @@
                     <mat-card class="stepper-card">
                         <h3>Order Review</h3>
                         <div class="review-details">
-                            <p><strong>Deliver to:</strong> {{ checkoutForm.get('fullName')?.value }}</p>
-                            <p><strong>Address:</strong> {{ checkoutForm.get('address')?.value }}, {{
-                                checkoutForm.get('city')?.value }}</p>
+                            <p><strong>Deliver to:</strong> {{ customerInfo.get('fullName')?.value }}</p>
+                            <p><strong>Address:</strong> {{ shippingInfo.get('address')?.value }}, {{
+                                shippingInfo.get('city')?.value }}</p>
                         </div>
 
                         <div class="summary-items">
                             <div class="summary-item" *ngFor="let item of cartService.cartItems()">
                                 <span>{{ item.product.title }} (x{{ item.quantity }})</span>
-                                <span>{{ item.totalPrice | currency:'INR':'symbol':'1.2-2' }}</span>
+                                <span>{{ (item.product.price * item.quantity) | currency:'INR':'symbol':'1.2-2'
+                                    }}</span>
                             </div>
                         </div>
 
